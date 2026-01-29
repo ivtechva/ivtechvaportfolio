@@ -1,19 +1,26 @@
 import React, { useState } from 'react';
-import { Send, Mail, MapPin, Linkedin, ArrowRight } from 'lucide-react';
+import { Mail, MapPin, Linkedin, ArrowRight } from 'lucide-react';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitted(true);
-      setFormData({ name: '', email: '', message: '' });
-    }, 1500);
+    
+    const recipient = 'ivtechva@gmail.com';
+    const subject = encodeURIComponent(`Project Inquiry from ${formData.name}`);
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+    );
+    
+    // Construct the mailto URL
+    const mailtoUrl = `mailto:${recipient}?subject=${subject}&body=${body}`;
+    
+    // Open the default email client
+    window.location.href = mailtoUrl;
+    
+    // Optionally clear the form
+    setFormData({ name: '', email: '', message: '' });
   };
 
   return (
@@ -66,37 +73,24 @@ const Contact: React.FC = () => {
 
           <div className="relative">
             <div className="p-10 md:p-14 rounded-[2.5rem] bg-zinc-50 dark:bg-[#0c0e14] border border-zinc-100 dark:border-zinc-800 shadow-xl dark:shadow-none">
-              {submitted ? (
-                <div className="text-center py-20">
-                  <div className="w-20 h-20 bg-emerald-50 dark:bg-emerald-950 text-emerald-500 rounded-full flex items-center justify-center mb-8 mx-auto">
-                    <Send className="w-10 h-10" />
-                  </div>
-                  <h3 className="text-3xl font-black text-zinc-900 dark:text-white mb-4">Success!</h3>
-                  <p className="text-zinc-500 dark:text-zinc-400 font-medium">Transmission received. I will reach out soon.</p>
-                  <button onClick={() => setSubmitted(false)} className="mt-10 px-8 py-3 rounded-xl border border-zinc-200 dark:border-zinc-800 text-zinc-500 dark:text-zinc-400 font-bold text-xs uppercase tracking-widest">
-                    Send Another
-                  </button>
+              <form onSubmit={handleSubmit} className="space-y-8 text-left">
+                <div className="space-y-3">
+                  <label className="text-[10px] font-black text-zinc-400 dark:text-zinc-500 uppercase tracking-[0.4em]">Identity</label>
+                  <input type="text" required value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} placeholder="Your Name" className="w-full px-6 py-4 rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/10 focus:border-blue-500 transition-all font-medium" />
                 </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-8 text-left">
-                  <div className="space-y-3">
-                    <label className="text-[10px] font-black text-zinc-400 dark:text-zinc-500 uppercase tracking-[0.4em]">Identity</label>
-                    <input type="text" required value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} placeholder="Your Name" className="w-full px-6 py-4 rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/10 focus:border-blue-500 transition-all font-medium" />
-                  </div>
-                  <div className="space-y-3">
-                    <label className="text-[10px] font-black text-zinc-400 dark:text-zinc-500 uppercase tracking-[0.4em]">Email</label>
-                    <input type="email" required value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} placeholder="email@example.com" className="w-full px-6 py-4 rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/10 focus:border-blue-500 transition-all font-medium" />
-                  </div>
-                  <div className="space-y-3">
-                    <label className="text-[10px] font-black text-zinc-400 dark:text-zinc-500 uppercase tracking-[0.4em]">Message</label>
-                    <textarea required rows={4} value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})} placeholder="How can I help you automate?" className="w-full px-6 py-4 rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/10 focus:border-blue-500 transition-all font-medium resize-none"></textarea>
-                  </div>
-                  <button type="submit" disabled={isSubmitting} className="w-full flex items-center justify-center px-10 py-5 rounded-2xl bg-zinc-900 dark:bg-white text-white dark:text-zinc-950 font-black hover:bg-blue-600 dark:hover:bg-blue-400 transition-all shadow-xl active:scale-[0.98]">
-                    {isSubmitting ? 'Sending...' : 'Send Message'}
-                    {!isSubmitting && <ArrowRight className="ml-2 w-5 h-5" />}
-                  </button>
-                </form>
-              )}
+                <div className="space-y-3">
+                  <label className="text-[10px] font-black text-zinc-400 dark:text-zinc-500 uppercase tracking-[0.4em]">Email</label>
+                  <input type="email" required value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} placeholder="email@example.com" className="w-full px-6 py-4 rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/10 focus:border-blue-500 transition-all font-medium" />
+                </div>
+                <div className="space-y-3">
+                  <label className="text-[10px] font-black text-zinc-400 dark:text-zinc-500 uppercase tracking-[0.4em]">Message</label>
+                  <textarea required rows={4} value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})} placeholder="How can I help you automate?" className="w-full px-6 py-4 rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/10 focus:border-blue-500 transition-all font-medium resize-none"></textarea>
+                </div>
+                <button type="submit" className="w-full flex items-center justify-center px-10 py-5 rounded-2xl bg-zinc-900 dark:bg-white text-white dark:text-zinc-950 font-black hover:bg-blue-600 dark:hover:bg-blue-400 transition-all shadow-xl active:scale-[0.98]">
+                  Send Message
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </button>
+              </form>
             </div>
           </div>
         </div>

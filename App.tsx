@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Services from './components/Services';
@@ -7,17 +7,17 @@ import Process from './components/Process';
 import Work from './components/Work';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import WorkflowAssistant from './components/WorkflowAssistant';
 
 const App: React.FC = () => {
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
-
   useEffect(() => {
-    // Check system preference on mount
-    const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    if (isDark) {
+    // Check local storage or system preference
+    const savedTheme = localStorage.getItem('theme');
+    const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
       document.documentElement.classList.add('dark');
-      setIsDarkMode(true);
+    } else {
+      document.documentElement.classList.remove('dark');
     }
   }, []);
 
@@ -33,7 +33,6 @@ const App: React.FC = () => {
         <Contact />
       </main>
       <Footer />
-      <WorkflowAssistant />
     </div>
   );
 };

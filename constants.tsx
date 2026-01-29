@@ -18,42 +18,42 @@ export const NAV_ITEMS: NavItem[] = [
 export const TOOLS = [
   { 
     name: 'Zapier', 
-    logo: 'https://cdn.simpleicons.org/zapier', 
+    logo: 'https://cdn.simpleicons.org/zapier/FF6600', 
     category: 'Automation' 
   },
   { 
     name: 'Make.com', 
-    logo: 'https://cdn.simpleicons.org/make', 
+    logo: 'https://cdn.simpleicons.org/make/6D28D9', 
     category: 'Automation' 
   },
   { 
     name: 'n8n', 
-    logo: 'https://cdn.simpleicons.org/n8n', 
+    logo: 'https://cdn.simpleicons.org/n8n/FF6C37', 
     category: 'Automation' 
   },
   { 
     name: 'GoHighLevel', 
-    logo: 'https://cdn.simpleicons.org/gohighlevel', 
+    logo: 'https://www.vectorlogo.zone/logos/gohighlevel/gohighlevel-icon.svg', 
     category: 'CRM' 
   },
   { 
     name: 'Gemini', 
-    logo: 'https://www.gstatic.com/lamda/images/gemini_sparkle_v002_d4735304fb332986e11.svg', 
+    logo: 'https://cdn.simpleicons.org/googlegemini/4285F4', 
     category: 'AI' 
   },
   { 
     name: 'Canva', 
-    logo: 'https://cdn.simpleicons.org/canva', 
+    logo: 'https://cdn.simpleicons.org/canva/00C4CC', 
     category: 'Design' 
   },
   { 
     name: 'ChatGPT', 
-    logo: 'https://cdn.simpleicons.org/openai', 
+    logo: 'https://cdn.simpleicons.org/openai/412991', 
     category: 'AI' 
   },
   { 
     name: 'Claude', 
-    logo: 'https://cdn.simpleicons.org/anthropic', 
+    logo: 'https://cdn.simpleicons.org/anthropic/D97757', 
     category: 'AI' 
   }
 ];
@@ -156,56 +156,56 @@ export const PROJECTS: Project[] = [
     id: 'zapier',
     title: 'Zapier',
     category: 'ZAPIER',
-    description: '',
+    description: 'Advanced Workflow Automation',
     problem: '',
     solution: '',
     result: '',
     impact: '',
     tags: [],
-    logo: 'https://cdn.simpleicons.org/zapier',
-    images: ['https://cdn.simpleicons.org/zapier'],
-    link: 'https://zapier.com'
+    logo: 'https://cdn.simpleicons.org/zapier/FF6600',
+    images: [],
+    link: 'https://docs.google.com/presentation/d/1XUL2b4Bv_S4H_CksP-aA3B30ghKdFkXvm2906zDYRdw/edit?usp=drive_link'
   },
   {
     id: 'make',
     title: 'Make (Integromat)',
     category: 'MAKE',
-    description: '',
+    description: 'Complex Data Integrations',
     problem: '',
     solution: '',
     result: '',
     impact: '',
     tags: [],
-    logo: 'https://cdn.simpleicons.org/make',
-    images: ['https://cdn.simpleicons.org/make'],
-    link: 'https://make.com'
+    logo: 'https://cdn.simpleicons.org/make/6D28D9',
+    images: [],
+    link: 'https://docs.google.com/presentation/d/1ERIkU3cNBMTPRTtA9h9jX2NWV99LZ-sa0H_H1cXB4XA/edit?usp=drive_link'
   },
   {
     id: 'n8n',
     title: 'n8n',
     category: 'N8N',
-    description: '',
+    description: 'Self-Hosted Automation',
     problem: '',
     solution: '',
     result: '',
     impact: '',
     tags: [],
-    logo: 'https://cdn.simpleicons.org/n8n',
-    images: ['https://cdn.simpleicons.org/n8n'],
-    link: 'https://n8n.io'
+    logo: 'https://cdn.simpleicons.org/n8n/FF6C37',
+    images: [],
+    link: 'https://docs.google.com/presentation/d/1ZiJU8iHVswJxWaWIi4vb54L7_z6PLrdSyV9BS5665iA/edit?usp=drive_link'
   },
   {
     id: 'ghl',
     title: 'GoHighLevel (GHL)',
     category: 'GOHIGHLEVEL',
-    description: '',
+    description: 'All-in-one CRM & Marketing',
     problem: '',
     solution: '',
     result: '',
     impact: '',
     tags: [],
-    logo: 'https://cdn.simpleicons.org/gohighlevel',
-    images: ['https://cdn.simpleicons.org/gohighlevel'],
-    link: 'https://gohighlevel.com'
+    logo: 'https://www.vectorlogo.zone/logos/gohighlevel/gohighlevel-icon.svg',
+    images: [],
+    link: 'https://docs.google.com/presentation/d/1mUnuB2lceA4ta9xenN-uZaa76s0hmt-8J4WZxRJyJfY/edit?usp=drive_link'
   }
 ];

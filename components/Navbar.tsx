@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ArrowUpRight, Sun, Moon } from 'lucide-react';
+import { Menu, X, Sun, Moon } from 'lucide-react';
 import { NAV_ITEMS } from '../constants';
 
 const Navbar: React.FC = () => {
@@ -13,22 +13,16 @@ const Navbar: React.FC = () => {
     };
     window.addEventListener('scroll', handleScroll);
     
-    // Check initial theme
-    if (document.documentElement.classList.contains('dark')) {
-      setIsDark(true);
-    }
+    // Sync initial state with document class
+    setIsDark(document.documentElement.classList.contains('dark'));
     
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const toggleTheme = () => {
-    if (isDark) {
-      document.documentElement.classList.remove('dark');
-      setIsDark(false);
-    } else {
-      document.documentElement.classList.add('dark');
-      setIsDark(true);
-    }
+    const currentIsDark = document.documentElement.classList.toggle('dark');
+    setIsDark(currentIsDark);
+    localStorage.setItem('theme', currentIsDark ? 'dark' : 'light');
   };
 
   return (
@@ -96,6 +90,7 @@ const Navbar: React.FC = () => {
         </div>
       </div>
 
+      {/* Mobile Menu */}
       <div className={`md:hidden fixed inset-0 z-40 bg-white dark:bg-zinc-950 transition-all duration-500 transform ${
         isOpen ? 'translate-x-0' : 'translate-x-full'
       }`}>
