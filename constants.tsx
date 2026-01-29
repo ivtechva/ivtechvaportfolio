@@ -9,6 +9,7 @@ import {
 import { Service, Experience, Project, NavItem } from './types';
 
 export const NAV_ITEMS: NavItem[] = [
+  { label: 'About', href: '#about' },
   { label: 'Services', href: '#services' },
   { label: 'Experience', href: '#experience' },
   { label: 'Portfolio', href: '#portfolio' },

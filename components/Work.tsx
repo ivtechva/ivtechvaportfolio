@@ -1,15 +1,26 @@
 import React, { useState } from 'react';
-import { ArrowUpRight, Box } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { PROJECTS } from '../constants';
 import { Project } from '../types';
 
 const ExpertiseFolder: React.FC<{ expertise: Project }> = ({ expertise }) => {
   const [imgSrc, setImgSrc] = useState(expertise.logo);
-  const [hasError, setHasError] = useState(false);
+  const [retryCount, setRetryCount] = useState(0);
 
   const handleError = () => {
-    if (!hasError) {
-      // Try a secondary source or common favicon as fallback
+    if (retryCount === 0) {
+      // Try Clearbit as first fallback
+      const domainMap: Record<string, string> = {
+        'Zapier': 'zapier.com',
+        'Make (Integromat)': 'make.com',
+        'n8n': 'n8n.io',
+        'GoHighLevel (GHL)': 'gohighlevel.com'
+      };
+      const domain = domainMap[expertise.title] || 'google.com';
+      setImgSrc(`https://logo.clearbit.com/${domain}`);
+      setRetryCount(1);
+    } else if (retryCount === 1) {
+      // Try Google Favicon as second fallback
       const domainMap: Record<string, string> = {
         'Zapier': 'zapier.com',
         'Make (Integromat)': 'make.com',
@@ -18,7 +29,7 @@ const ExpertiseFolder: React.FC<{ expertise: Project }> = ({ expertise }) => {
       };
       const domain = domainMap[expertise.title] || 'google.com';
       setImgSrc(`https://www.google.com/s2/favicons?domain=${domain}&sz=128`);
-      setHasError(true);
+      setRetryCount(2);
     }
   };
 
@@ -34,7 +45,7 @@ const ExpertiseFolder: React.FC<{ expertise: Project }> = ({ expertise }) => {
         <div className="absolute inset-0 bg-blue-50/50 dark:bg-blue-900/5 rounded-2xl border border-blue-100/30 dark:border-blue-800/20"></div>
         <div className="absolute -top-2 left-4 w-12 h-6 bg-blue-50/50 dark:bg-blue-900/5 rounded-t-lg border-t border-l border-r border-blue-100/30 dark:border-blue-800/20"></div>
         
-        <div className="relative z-10 w-16 h-16 bg-white dark:bg-zinc-900 rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.05)] border border-zinc-100 dark:border-zinc-800 flex items-center justify-center p-3.5 group-hover:scale-110 transition-transform duration-500">
+        <div className="relative z-10 w-16 h-16 bg-white dark:bg-zinc-900 rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.05)] border border-zinc-100 dark:border-zinc-800 flex items-center justify-center p-3.5 group-hover:scale-110 transition-transform duration-500 overflow-hidden">
           <img 
             src={imgSrc} 
             alt={expertise.title} 

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import About from './components/About';
 import Services from './components/Services';
 import Experience from './components/Experience';
 import Process from './components/Process';
@@ -26,6 +27,7 @@ const App: React.FC = () => {
       <Navbar />
       <main>
         <Hero />
+        <About />
         <Services />
         <Experience />
         <Process />
