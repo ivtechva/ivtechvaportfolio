@@ -1,3 +1,4 @@
+
 // Added React import to provide access to the React namespace for types like ReactNode
 import React from 'react';
 
@@ -21,13 +22,14 @@ export interface Project {
   title: string;
   category: string;
   description: string;
+  overview: string;
   problem: string;
   solution: string;
   result: string;
-  impact: string;
   tags: string[];
   images: string[];
   logo: string;
+  googleDriveLink?: string;
   link?: string;
 }
 

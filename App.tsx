@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -8,6 +9,7 @@ import Process from './components/Process';
 import Work from './components/Work';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import WorkflowAssistant from './components/WorkflowAssistant';
 
 const App: React.FC = () => {
   useEffect(() => {
@@ -35,6 +37,7 @@ const App: React.FC = () => {
         <Contact />
       </main>
       <Footer />
+      <WorkflowAssistant />
     </div>
   );
 };

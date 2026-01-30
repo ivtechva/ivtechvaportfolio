@@ -13,7 +13,6 @@ const Footer: React.FC = () => {
           </div>
           <div className="flex flex-col md:flex-row items-center md:space-x-10 space-y-4 md:space-y-0 text-[11px] font-black uppercase tracking-[0.2em] text-zinc-400 dark:text-zinc-500">
             <a href="#services" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Services</a>
-            <a href="#experience" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Experience</a>
             <a href="#portfolio" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Work</a>
             <a href="#contact" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contact</a>
           </div>
