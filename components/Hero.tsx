@@ -192,7 +192,7 @@ const Hero: React.FC = () => {
         </div>
 
         <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[5.2rem] font-black tracking-tighter text-zinc-900 dark:text-white mb-6 leading-[1.05]">
-          Technical Virtual Assistant &<br />
+          Technical Virtual Assistant<br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 via-blue-500 to-blue-400 dark:from-blue-400 dark:via-blue-500 dark:to-blue-300">
             GHL / AI Automation
           </span><br />

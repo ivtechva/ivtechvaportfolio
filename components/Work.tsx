@@ -22,8 +22,8 @@ const ProjectCard: React.FC<{ project: Project; onClick: () => void }> = ({ proj
       onClick={onClick}
       className="group bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-800 overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col h-full"
     >
-      {/* Image Area */}
-      <div className="relative aspect-[16/10] bg-zinc-50 dark:bg-zinc-950/50 p-4 flex items-center justify-center overflow-hidden border-b border-zinc-100 dark:border-zinc-800">
+      {/* Image Area - Changed aspect ratio to square for bigger presentation */}
+      <div className="relative aspect-square bg-zinc-50 dark:bg-zinc-950/50 p-2 flex items-center justify-center overflow-hidden border-b border-zinc-100 dark:border-zinc-800">
         {/* Badge */}
         <div className="absolute top-4 left-4 z-20">
           <span className="inline-flex items-center justify-center px-3 py-1 rounded-full bg-blue-600 text-white text-[10px] font-bold uppercase tracking-wider shadow-md">
@@ -139,7 +139,7 @@ const ProjectModal: React.FC<{ project: Project; onClose: () => void }> = ({ pro
         
         {/* Modal Content - Prevent click propagation to backdrop */}
         <div 
-          className="relative w-full max-w-6xl max-h-[90vh] bg-white dark:bg-zinc-900 rounded-3xl shadow-2xl overflow-y-auto animate-in zoom-in-95 duration-300 flex flex-col"
+          className="relative w-full max-w-6xl max-h-[95vh] bg-white dark:bg-zinc-900 rounded-3xl shadow-2xl overflow-y-auto animate-in zoom-in-95 duration-300 flex flex-col"
           onClick={(e) => e.stopPropagation()}
         >
           
@@ -163,17 +163,17 @@ const ProjectModal: React.FC<{ project: Project; onClose: () => void }> = ({ pro
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
-              {/* Left Column: Image Slider */}
+              {/* Left Column: Image Slider - Increased size */}
               <div className="space-y-4">
                 <div 
-                  className={`relative group w-full aspect-[16/10] bg-zinc-50 dark:bg-zinc-950 rounded-2xl border border-zinc-100 dark:border-zinc-800 overflow-hidden flex items-center justify-center transition-colors ${!imgError ? 'cursor-pointer hover:border-blue-500/30' : ''}`}
+                  className={`relative group w-full aspect-[4/5] md:aspect-[3/4] bg-zinc-50 dark:bg-zinc-950 rounded-2xl border border-zinc-100 dark:border-zinc-800 overflow-hidden flex items-center justify-center transition-colors ${!imgError ? 'cursor-pointer hover:border-blue-500/30' : ''}`}
                 >
                   <div className="absolute inset-0 flex items-center justify-center" onClick={() => !imgError && setShowLightbox(true)}>
                     <img 
                       key={currentIdx} // Force re-render on change
                       src={project.images[currentIdx]} 
                       alt={`${project.title} - View ${currentIdx + 1}`}
-                      className={`w-full h-full object-contain p-4 transition-all duration-500 animate-in fade-in zoom-in-95`}
+                      className={`w-full h-full object-contain p-2 transition-all duration-500 animate-in fade-in zoom-in-95`}
                       onError={() => setImgError(true)}
                     />
                   </div>
@@ -314,7 +314,7 @@ const ProjectModal: React.FC<{ project: Project; onClose: () => void }> = ({ pro
           )}
 
           {/* Main Image */}
-          <div className="relative w-full h-[80vh] flex items-center justify-center">
+          <div className="relative w-full h-[90vh] flex items-center justify-center">
              <img 
                key={currentIdx}
                src={project.images[currentIdx]} 
@@ -365,7 +365,7 @@ const ProjectModal: React.FC<{ project: Project; onClose: () => void }> = ({ pro
 };
 
 const Work: React.FC = () => {
-  const tabs = ['All', 'GHL', 'Make', 'N8N']; // Removed Zapier
+  const tabs = ['All', 'GHL', 'Make', 'N8N', 'Zapier']; 
   const [activeTab, setActiveTab] = useState('All');
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
