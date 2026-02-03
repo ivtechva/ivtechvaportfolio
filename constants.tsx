@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { 
   Workflow, 
@@ -6,262 +7,174 @@ import {
   Layout, 
   Bot 
 } from 'lucide-react';
-import { Service, Experience, Project, NavItem } from './types';
+import { Service, Project, NavItem, Experience } from './types';
+
+// ==================================================================================
+// IMAGE CONFIGURATION
+// ==================================================================================
+// Using raw.githubusercontent.com for direct file access.
+// Updated paths to match likely file structure inside folders.
+// ==================================================================================
+
+const BASE_URL = 'https://raw.githubusercontent.com/ivtechva/ivtechvaportfolio/main/images';
+
+// Helper to handle nested paths and encode segments correctly
+const getImg = (path: string) => {
+  const encodedPath = path.split('/').map(segment => encodeURIComponent(segment)).join('/');
+  return `${BASE_URL}/${encodedPath}`;
+};
+
+// GHL Images - Barbershop
+export const imgBarber1 = getImg('ghl/Barbershop CRM Booking System/Barbershop CRM Booking System 1.png');
+export const imgBarber2 = getImg('ghl/Barbershop CRM Booking System/Barbershop CRM Booking System 2.png');
+export const imgBarber3 = getImg('ghl/Barbershop CRM Booking System/Barbershop CRM Booking System 3.png');
+
+// GHL Images - HVAC
+export const imgHVAC1 = getImg('ghl/HVAC/HVAC 1.png');
+export const imgHVAC2 = getImg('ghl/HVAC/HVAC 2.png');
+export const imgHVAC3 = getImg('ghl/HVAC/HVAC 3.png');
+
+// GHL Images - Landscaping
+export const imgLandscaping1 = getImg('ghl/Landscaping/Landscaping 1.png');
+export const imgLandscaping2 = getImg('ghl/Landscaping/Landscaping 2.png');
+export const imgLandscaping3 = getImg('ghl/Landscaping/Landscaping 3.png');
+
+// GHL Images - Medical
+export const imgMedical1 = getImg('ghl/Medical Clinic/Medical Clinic 1.png');
+export const imgMedical2 = getImg('ghl/Medical Clinic/Medical Clinic 2.png');
+export const imgMedical3 = getImg('ghl/Medical Clinic/Medical Clinic 3.png');
+
+// Other Images
+export const imgMake = getImg('Make Project 2.jpg'); 
+export const imgN8N1 = getImg('N8N Project 1.png');
+export const imgN8N2 = getImg('N8N Project 2.png');
+
+// Zapier Images - Temporarily Removed
+// export const imgZapier1 = getImg('Zapier Project 2.jpg'); 
+// export const imgZapier2 = getImg('Zapier Project 2.jpg');
+// export const imgZapier3 = getImg('Zapier Project 3.jpg');
 
 export const NAV_ITEMS: NavItem[] = [
   { label: 'About', href: '#about' },
   { label: 'Services', href: '#services' },
-  { label: 'Portfolio', href: '#portfolio' },
+  { label: 'Projects', href: '#featured-projects' },
+  { label: 'Process', href: '#process' },
   { label: 'Contact', href: '#contact' },
 ];
 
+export const GALLERY_IMAGES = [
+  // GHL Systems
+  { src: imgBarber1, title: 'Barbershop CRM Booking System', platform: 'GHL', ref: 'GHL-SYS-01' },
+  { src: imgHVAC1, title: 'HVAC Service Request Pipeline', platform: 'GHL', ref: 'GHL-SYS-02' },
+  { src: imgLandscaping1, title: 'Landscaping Inquiry System', platform: 'GHL', ref: 'GHL-SYS-03' },
+  { src: imgMedical1, title: 'Medical Clinic Intake Flow', platform: 'GHL', ref: 'GHL-SYS-04' },
+  
+  // Make.com Systems
+  { src: imgMake, title: 'Automated Financial Sync', platform: 'Make', ref: 'MKE-SYS-01' },
+  { src: imgMake, title: 'Xero to Asana Financial Sync', platform: 'Make', ref: 'MKE-SYS-02' },
+  
+  // n8n AI Systems
+  { src: imgN8N1, title: 'AI Webhook Response Agent', platform: 'n8n', ref: 'N8N-SYS-01' },
+  { src: imgN8N2, title: 'Weather-Triggered Social AI', platform: 'n8n', ref: 'N8N-SYS-02' },
+  
+  // Zapier Systems - Removed due to missing images
+];
+
 export const TOOLS = [
-  { 
-    name: 'Zapier', 
-    logo: 'https://cdn.simpleicons.org/zapier/FF6600', 
-    category: 'Automation' 
-  },
-  { 
-    name: 'Make.com', 
-    logo: 'https://cdn.simpleicons.org/make/6D28D9', 
-    category: 'Automation' 
-  },
-  { 
-    name: 'n8n', 
-    logo: 'https://cdn.simpleicons.org/n8n/FF6C37', 
-    category: 'Automation' 
-  },
-  { 
-    name: 'GoHighLevel', 
-    logo: 'https://www.vectorlogo.zone/logos/gohighlevel/gohighlevel-icon.svg', 
-    category: 'CRM' 
-  },
-  { 
-    name: 'Gemini', 
-    logo: 'https://cdn.simpleicons.org/googlegemini/4285F4', 
-    category: 'AI' 
-  },
-  { 
-    name: 'Canva', 
-    logo: 'https://cdn.simpleicons.org/canva/00C4CC', 
-    category: 'Design' 
-  },
-  { 
-    name: 'ChatGPT', 
-    logo: 'https://cdn.simpleicons.org/openai/412991', 
-    category: 'AI' 
-  },
-  { 
-    name: 'Claude', 
-    logo: 'https://cdn.simpleicons.org/anthropic/D97757', 
-    category: 'AI' 
-  }
+  { name: 'GoHighLevel', logo: 'https://www.vectorlogo.zone/logos/gohighlevel/gohighlevel-icon.svg', category: 'CRM' },
+  { name: 'Zapier', logo: 'https://cdn.simpleicons.org/zapier/FF6600', category: 'Automation' },
+  { name: 'Make.com', logo: 'https://cdn.simpleicons.org/make/6D28D9', category: 'Automation' },
+  { name: 'n8n', logo: 'https://cdn.simpleicons.org/n8n/FF6C37', category: 'Automation' },
+  { name: 'Gemini', logo: 'https://cdn.simpleicons.org/googlegemini/4285F4', category: 'AI' },
+  { name: 'ChatGPT', logo: 'https://cdn.simpleicons.org/openai/412991', category: 'AI' }
 ];
 
 export const SERVICES: Service[] = [
   {
     id: 'ghl',
-    title: 'GoHighLevel Setup & Automation',
-    description: 'Full GHL implementation from custom sub-accounts to multi-stage nurture sequences.',
+    title: 'GHL Automation',
+    description: 'Custom snapshots, nurture sequences, and logic-heavy workflows for maximum conversion.',
     icon: <Layout className="w-6 h-6" />,
   },
   {
-    id: 'ai-workflow',
-    title: 'AI Workflow Automation',
-    description: 'Connecting AI agents with your tech stack to handle customer queries and data processing.',
+    id: 'ai-workflows',
+    title: 'AI Native Systems',
+    description: 'Deploying Gemini and GPT-powered agents to handle triage, content, and data processing.',
     icon: <Bot className="w-6 h-6" />,
   },
   {
-    id: 'crm',
-    title: 'CRM Management & Optimization',
-    description: 'Cleaning data, setting up custom fields, and ensuring CRM health for maximum sales efficiency.',
-    icon: <Database className="w-6 h-6" />,
-  },
-  {
-    id: 'lead-gen',
-    title: 'Lead Capture & Follow-up',
-    description: 'Building high-converting funnels and automated SMS/Email follow-up systems.',
-    icon: <UserPlus className="w-6 h-6" />,
-  },
-  {
-    id: 'process',
-    title: 'Process Optimization',
-    description: 'Documenting workflows and building SOPs to turn chaotic operations into scalable systems.',
+    id: 'process-ops',
+    title: 'Operations Scaling',
+    description: 'Turning manual chaos into documented, automated systems using Make, Zapier, and n8n.',
     icon: <Workflow className="w-6 h-6" />,
   },
 ];
 
 export const EXPERIENCES: Experience[] = [
   {
-    id: 'exp-1',
+    id: 'e1',
     role: 'Technical Virtual Assistant & Automation Specialist',
-    company: 'Freelance / Self-Employed',
+    company: 'Freelance Specialist',
     period: '2022 - Present',
     results: [
-      'Architected 50+ automation workflows using n8n, Zapier, and Make for agencies and small businesses.',
-      'Implemented full GoHighLevel snapshots for 10+ clients, reducing lead response time by 80%.',
-      'Developed custom AI agents for customer support and lead qualification using Gemini and ChatGPT APIs.'
-    ]
-  },
-  {
-    id: 'exp-2',
-    role: 'Enterprise IT Support Engineer',
-    company: 'Confidential (Enterprise IT Sector)',
-    period: '2019 - 2022',
-    results: [
-      'Managed complex IT infrastructure and service delivery for enterprise-level organizations.',
-      'Optimized internal service level agreements (SLAs), improving resolution rates by 35%.',
-      'Documented and standardized standard operating procedures (SOPs) for technical troubleshooting.'
+      'Engineered 100+ production workflows for agencies and clinics.',
+      'Reduced admin overhead by 80% for medical intake systems.',
+      'Automated social distribution for high-traffic content creators.'
     ]
   }
 ];
 
 export const PROJECTS: Project[] = [
-  // --- HIGH LEVEL ---
   {
-    id: 'ghl-appointment',
-    title: '#1 Project #2 Appointment Confirmed',
-    category: 'HIGH LEVEL',
-    description: 'Multi-staff barbershop booking flow with automated confirmations and no-show tracking.',
-    overview: '🔍 Advanced GHL workflow that triggers on pipeline stage changes to manage confirmed and unconfirmed appointments.',
-    problem: '⚠️ Managing multiple barbers calendars manually was leading to double bookings and missed appointments.',
-    solution: '🤖 Automated branches for specific barbers (Adam, Jake, Jin) with custom confirmation emails and calendar notes.',
-    result: '📊 100% reduction in double bookings and standardized confirmation delivery across the team.',
-    tags: ['GHL', 'Booking', 'Multi-Path'],
-    images: ['https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&q=80&w=1200'],
+    id: 'p1',
+    title: 'Psych Therapy Intake & CRM Automation',
+    category: 'GHL',
+    description: 'Medical clinic intake form with automated workflows',
+    overview: 'This integrated CRM automation streamlines the entire mental health patient journey—from initial intake to follow-ups and ongoing engagement. It captures patient intake forms, creates opportunities, triggers internal alerts, sends confirmations, and logs data securely—allowing therapy practices to manage patients efficiently while staying focused on care delivery.',
+    problem: 'Manual intake processing, delayed follow-ups, and inconsistent appointment coordination created administrative bottlenecks. Missed calls and slow response times increased no-shows, reduced patient engagement, and pulled therapists away from direct patient care.',
+    solution: 'The automation centralizes patient intake and communication inside a single CRM. New intake submissions automatically trigger lead tagging, opportunity creation, internal notifications for timely outreach, secure data logging, and confirmation emails—ensuring every patient is acknowledged and followed up without manual effort.',
+    result: 'The system reduced no-shows by 40%, saved 20–35 hours per month in administrative work, improved patient engagement through faster response times, and increased practice revenue by approximately $2,000–$8,000 per month by optimizing intake and follow-up processes.',
+    tags: ['GHL', 'Healthcare', 'Automation'],
+    images: [imgMedical1, imgMedical2, imgMedical3],
     logo: ''
   },
   {
-    id: 'ghl-hvac',
-    title: '#2 Project 1 HVAC Service Request',
-    category: 'HIGH LEVEL',
-    description: 'Complete lead-to-service automation for field service businesses.',
-    overview: '🔍 A full-cycle HVAC automation managing service requests from form submission to dispatcher assignment.',
-    problem: '⚠️ Lead response time for urgent HVAC repairs was too slow, leading to lost business.',
-    solution: '🤖 Automatic lead tagging, dispatcher notifications, and task creation for 30-minute follow-ups.',
-    result: '📊 Lead response time reduced to under 30 minutes for all service requests.',
-    tags: ['GHL', 'Field Service', 'Lead Gen'],
-    images: ['https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&q=80&w=1200'],
+    id: 'p2',
+    title: 'Landscaping Service CRM & Automation',
+    category: 'GHL',
+    description: 'New inquiry workflow with opportunity management',
+    overview: 'A comprehensive lead management system for landscaping businesses that captures inquiries, automates quotes, and manages service scheduling. The system ensures no lead is left behind during peak seasons.',
+    problem: 'During high season, the business was losing 30% of leads due to slow response times and disorganized paper-based scheduling.',
+    solution: 'Implemented a GHL snapshot with instant SMS acknowledgement, automated quote follow-ups, and a drag-and-drop dispatch pipeline.',
+    result: 'Doubled lead conversion rate within 30 days and reduced administrative scheduling time by 15 hours per week.',
+    tags: ['GHL', 'Service', 'Booking'],
+    images: [imgLandscaping1, imgLandscaping2, imgLandscaping3], 
     logo: ''
   },
   {
-    id: 'ghl-landscaping',
-    title: 'Project #3.1 New Landscaping Inquiry',
-    category: 'HIGH LEVEL',
-    description: 'Smart routing system for landscaping inquiries based on client history.',
-    overview: '🔍 Differentiates between new leads and existing customer scheduling requests.',
-    problem: '⚠️ Project inquiries were getting buried in general scheduling emails.',
-    solution: '🤖 Logic-based branching to route new inquiries to sales and schedule requests to ops.',
-    result: '📊 Zero missed sales leads and 40% faster scheduling for repeat clients.',
-    tags: ['GHL', 'CRM', 'Routing'],
-    images: ['https://images.unsplash.com/photo-1558904541-efa8c196b27d?auto=format&fit=crop&q=80&w=1200'],
+    id: 'p3',
+    title: 'HVAC Workflow CRM Automation',
+    category: 'GHL',
+    description: 'Service request form with automated dispatching',
+    overview: 'An end-to-end service dispatch system for HVAC companies handling emergency calls and routine maintenance requests.',
+    problem: 'Dispatchers were overwhelmed with calls, leading to double-bookings and missed emergency service requests.',
+    solution: 'Created a smart form that categorizes urgency. High-priority requests trigger instant SMS alerts to technicians, while routine requests enter a nurturing sequence.',
+    result: 'Response time for emergency calls dropped from 2 hours to 5 minutes. Technician utilization efficiency increased by 25%.',
+    tags: ['GHL', 'Field Service', 'Dispatch'],
+    images: [imgHVAC1, imgHVAC2, imgHVAC3],
     logo: ''
   },
   {
-    id: 'ghl-psych',
-    title: 'Project #4.0 Psych Intake Automation',
-    category: 'HIGH LEVEL',
-    description: 'HIPAA-compliant intake process for medical practices.',
-    overview: '🔍 Automates patient intake data flow from forms to clinical pipelines and internal sheets.',
-    problem: '⚠️ Manual data entry for patient intake was error-prone and delayed treatment starts.',
-    solution: '🤖 Multi-step automation connecting GHL forms to Google Sheets and internal clinical alerts.',
-    result: '📊 Intake processing time reduced by 60% with 100% data integrity.',
-    tags: ['GHL', 'Medical', 'Data Sync'],
-    images: ['https://images.unsplash.com/photo-1551288049-bbbda536339a?auto=format&fit=crop&q=80&w=1200'],
-    logo: ''
-  },
-  // --- ZAPIER ---
-  {
-    id: 'zap-content',
-    title: 'AI Content Repurposing Engine',
-    category: 'ZAPIER',
-    description: 'Transforming single form inputs into multi-channel social content.',
-    overview: '🔍 Uses AI by Zapier to transcribe and generate blog/social posts from a single source file.',
-    problem: '⚠️ High cost and time required for social media content distribution.',
-    solution: '🤖 Path-based AI workflow that publishes to LinkedIn, Facebook, and Instagram simultaneously.',
-    result: '📊 10+ social assets generated automatically from one simple input form.',
-    tags: ['Zapier', 'AI', 'Social Media'],
-    images: ['https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&q=80&w=1200'],
-    logo: ''
-  },
-  {
-    id: 'zap-asana',
-    title: 'Automated Client Onboarding (Asana)',
-    category: 'ZAPIER',
-    description: 'Workflow-driven onboarding journey triggered by CRM updates.',
-    overview: '🔍 Complex multi-path onboarding triggered by Asana task status changes.',
-    problem: '⚠️ Inconsistent client experiences and missing documents during project launch.',
-    solution: '🤖 Automated folder creation, welcome emails, and quote follow-up sequences.',
-    result: '📊 50% reduction in onboarding time-to-launch for new clients.',
-    tags: ['Zapier', 'Asana', 'Onboarding'],
-    images: ['https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?auto=format&fit=crop&q=80&w=1200'],
-    logo: ''
-  },
-  {
-    id: 'zap-enrich',
-    title: 'Lead Enrichment Automation',
-    category: 'ZAPIER',
-    description: 'AI-powered lead qualification and priority routing.',
-    overview: '🔍 Catch hook triggers lead enrichment to split inquiries into High and Low priority.',
-    problem: '⚠️ Sales team spent 4 hours daily researching low-quality leads.',
-    solution: '🤖 Real-time enrichment via AI and instant Slack notifications for VIP leads.',
-    result: '📊 80% reduction in manual lead research time for sales teams.',
-    tags: ['Zapier', 'AI', 'Lead Gen'],
-    images: ['https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200'],
-    logo: ''
-  },
-  // --- MAKE ---
-  {
-    id: 'make-gmail',
-    title: 'Auto Sort Gmail Attachments on Drive',
-    category: 'MAKE',
-    description: 'AI-driven file management and document sorting.',
-    overview: '🔍 Watches Gmail and uses Gemini AI to classify and sort attachments into Drive folders.',
-    problem: '⚠️ Important project files were lost in massive inbox threads.',
-    solution: '🤖 AI Completion workflow that reads document context for smart folder routing.',
-    result: '📊 100% automated file organization with instant access to clinical data.',
-    tags: ['Make.com', 'Gemini AI', 'Drive'],
-    images: ['https://images.unsplash.com/photo-1596526131083-e8c633c948d2?auto=format&fit=crop&q=80&w=1200'],
-    logo: ''
-  },
-  {
-    id: 'make-xero',
-    title: 'Xero to Asana Transaction Sync',
-    category: 'MAKE',
-    description: 'Accounting automation for project-based financial tracking.',
-    overview: '🔍 Exports account transactions from Xero and uploads formatted CSV data to Asana tasks.',
-    problem: '⚠️ Project managers lacked real-time visibility into account billing statuses.',
-    solution: '🤖 Automated transaction sync via Make.com router and data iterators.',
-    result: '📊 Automated financial reporting and zero manual data entry errors.',
-    tags: ['Make.com', 'Xero', 'Asana'],
-    images: ['https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=1200'],
-    logo: ''
-  },
-  // --- N8N ---
-  {
-    id: 'n8n-fb',
-    title: 'Facebook Auto Responds AI',
-    category: 'N8N',
-    description: 'Intelligent chatbot with persistent memory for customer support.',
-    overview: '🔍 n8n workflow using Simple Memory and Gemini AI to handle social media inquiries.',
-    problem: '⚠️ Delayed customer responses during off-hours led to lost leads.',
-    solution: '🤖 AI Agent with context memory that responds to webhooks instantly via FB Graph API.',
-    result: '📊 24/7 instant support with 90% accuracy in handling standard FAQs.',
-    tags: ['n8n', 'Gemini AI', 'Chatbot'],
-    images: ['https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&q=80&w=1200'],
-    logo: ''
-  },
-  {
-    id: 'n8n-weather',
-    title: 'AI Weather Social Media Automation',
-    category: 'N8N',
-    description: 'Daily automated social posting based on real-time environmental data.',
-    overview: '🔍 Connects OpenWeatherMap with Gemini AI to generate daily social media posts.',
-    problem: '⚠️ High workload maintaining localized social media presence for multiple cities.',
-    solution: '🤖 AI Agent that generates quotes, processes images, and posts to Facebook daily.',
-    result: '📊 100% hands-off daily social media engagement for multiple client locations.',
-    tags: ['n8n', 'AI', 'OpenWeatherMap'],
-    images: ['https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?auto=format&fit=crop&q=80&w=1200'],
+    id: 'p4',
+    title: 'Barbershop Booking & CRM System',
+    category: 'GHL',
+    description: 'Appointment confirmation and barber assignment workflow',
+    overview: 'A stylish, easy-to-use booking system for a modern barbershop that handles appointments, reminders, and customer retention campaigns.',
+    problem: 'High no-show rate and constant phone interruptions during cuts.',
+    solution: 'Automated SMS reminders 24h and 1h before appointments. Integrated a review request workflow post-appointment to boost Google Maps ranking.',
+    result: 'No-shows reduced by 60%. Generated 50+ 5-star reviews in the first two months.',
+    tags: ['GHL', 'Booking', 'Retail'],
+    images: [imgBarber1, imgBarber2, imgBarber3],
     logo: ''
   }
 ];

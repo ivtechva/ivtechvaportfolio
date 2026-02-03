@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from 'react';
 import { ArrowRight, Box } from 'lucide-react';
 import { TOOLS } from '../constants';
@@ -173,7 +174,7 @@ const Hero: React.FC = () => {
   const scrollTools = [...TOOLS, ...TOOLS, ...TOOLS];
 
   return (
-    <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-white dark:bg-zinc-950 transition-colors duration-500">
+    <section className="relative pt-24 pb-12 lg:pt-32 lg:pb-20 overflow-hidden bg-white dark:bg-zinc-950 transition-colors duration-500">
       {/* Interactive Particle Background */}
       <ParticleCanvas />
 
@@ -182,7 +183,7 @@ const Hero: React.FC = () => {
       <div className="absolute bottom-1/4 -right-24 w-[30rem] h-[30rem] bg-indigo-50/40 dark:bg-indigo-900/10 rounded-full blur-[150px] pointer-events-none"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full border border-blue-100 dark:border-blue-900/30 bg-blue-50/50 dark:bg-blue-950/30 text-[10px] font-black tracking-[0.3em] text-blue-600 dark:text-blue-400 mb-10 uppercase backdrop-blur-sm">
+        <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full border border-blue-100 dark:border-blue-900/30 bg-blue-50/50 dark:bg-blue-950/30 text-[10px] font-black tracking-[0.3em] text-blue-600 dark:text-blue-400 mb-8 uppercase backdrop-blur-sm">
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-600"></span>
@@ -190,7 +191,7 @@ const Hero: React.FC = () => {
           <span>Open for new projects</span>
         </div>
 
-        <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[5.8rem] font-black tracking-tighter text-zinc-900 dark:text-white mb-8 leading-[1.05]">
+        <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[5.2rem] font-black tracking-tighter text-zinc-900 dark:text-white mb-6 leading-[1.05]">
           Technical Virtual Assistant &<br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 via-blue-500 to-blue-400 dark:from-blue-400 dark:via-blue-500 dark:to-blue-300">
             GHL / AI Automation
@@ -200,17 +201,17 @@ const Hero: React.FC = () => {
           </span>
         </h1>
         
-        <p className="max-w-3xl mx-auto text-base md:text-xl text-zinc-500 dark:text-zinc-400 mb-14 leading-relaxed font-medium px-4">
+        <p className="max-w-3xl mx-auto text-base md:text-xl text-zinc-500 dark:text-zinc-400 mb-10 leading-relaxed font-medium px-4">
           Transforming how businesses operate through intelligent automation<br className="hidden md:block" />
           and optimized systems. Stop manual repetitive tasks and start scaling efficiently.
         </p>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 mb-32">
+        <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 mb-16">
           <a
-            href="#portfolio"
+            href="#contact"
             className="group w-full sm:w-auto flex items-center justify-center px-10 py-5 rounded-2xl bg-zinc-900 dark:bg-white text-white dark:text-zinc-950 font-black text-sm uppercase tracking-widest hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-all transform active:scale-95 shadow-2xl shadow-zinc-300 dark:shadow-none"
           >
-            View My Work
+            Work With Me
             <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
           </a>
           <a
@@ -221,8 +222,8 @@ const Hero: React.FC = () => {
           </a>
         </div>
 
-        <div className="pt-24 pb-16">
-          <h2 className="text-4xl md:text-6xl font-black text-zinc-900 dark:text-white mb-4 tracking-tighter">
+        <div className="pt-12 pb-8">
+          <h2 className="text-4xl md:text-5xl font-black text-zinc-900 dark:text-white mb-2 tracking-tighter">
             Tools & <span className="text-blue-600 dark:text-blue-400">Technologies</span>
           </h2>
           <p className="max-w-2xl mx-auto text-zinc-500 dark:text-zinc-400 text-sm md:text-lg font-medium">
@@ -231,7 +232,7 @@ const Hero: React.FC = () => {
         </div>
       </div>
 
-      <div className="relative w-full overflow-hidden py-10">
+      <div className="relative w-full overflow-hidden py-6">
         <div className="absolute left-0 top-0 bottom-0 w-32 md:w-64 bg-gradient-to-r from-white dark:from-zinc-950 to-transparent z-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-32 md:w-64 bg-gradient-to-l from-white dark:from-zinc-950 to-transparent z-10 pointer-events-none" />
         

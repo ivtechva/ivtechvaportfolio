@@ -4,16 +4,13 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
 import Services from './components/Services';
-import Experience from './components/Experience';
-import Process from './components/Process';
 import Work from './components/Work';
+import Process from './components/Process';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import WorkflowAssistant from './components/WorkflowAssistant';
 
 const App: React.FC = () => {
   useEffect(() => {
-    // Check local storage or system preference
     const savedTheme = localStorage.getItem('theme');
     const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     
@@ -31,13 +28,11 @@ const App: React.FC = () => {
         <Hero />
         <About />
         <Services />
-        <Experience />
-        <Process />
         <Work />
+        <Process />
         <Contact />
       </main>
       <Footer />
-      <WorkflowAssistant />
     </div>
   );
 };

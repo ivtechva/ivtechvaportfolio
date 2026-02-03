@@ -12,10 +12,7 @@ const Navbar: React.FC = () => {
       setScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll);
-    
-    // Sync initial state with document class
     setIsDark(document.documentElement.classList.contains('dark'));
-    
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -90,7 +87,6 @@ const Navbar: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       <div className={`md:hidden fixed inset-0 z-40 bg-white dark:bg-zinc-950 transition-all duration-500 transform ${
         isOpen ? 'translate-x-0' : 'translate-x-full'
       }`}>
